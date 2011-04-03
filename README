@@ -1,0 +1,3 @@
+These are my dotfiles.
+
+.vimrc.local is for overrides on top of the default Janus setup (https://github.com/carlhuda/janus) 

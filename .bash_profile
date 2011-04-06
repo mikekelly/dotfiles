@@ -131,7 +131,7 @@ else
 fi
 
 parse_git_branch() {
-  git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\ →\ \1/'
+  git name-rev HEAD 2> /dev/null | sed 's#HEAD\ \(.*\)# {\1}#'
 }
 
 prompt_simple() {
@@ -147,7 +147,7 @@ prompt_compact() {
 }
 
 prompt_color() {
-    PS1="${GREY}[${COLOR1}\u${GREY}@${COLOR2}\h${GREY}:${COLOR1}\w${GREY}]${COLOR2}$P${PS_CLEAR} "
+  PS1="${GREY}[${COLOR1}\u${GREY}@${COLOR2}\h${GREY}:${COLOR1}\w\$(parse_git_branch)${GREY}]${COLOR2}$P${PS_CLEAR} "
     PS2="\[[33;1m\]continue \[[0m[1m\]> "
 }
 

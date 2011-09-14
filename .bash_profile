@@ -235,4 +235,5 @@ test -n "$INTERACTIVE" -a -n "$LOGIN" && {
     uptime
 }
 
-
+# STARTUP NVM
+. ~/.nvm/nvm.sh

@@ -1,1 +1,5 @@
-colorscheme vividchalk
+" Colourscheme
+colorscheme darkspectrum
+
+" Use Node.js for JavaScript interpretation
+let $JS_CMD='node'

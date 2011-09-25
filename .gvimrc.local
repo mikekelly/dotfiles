@@ -1,3 +1,10 @@
-set background=light
-colorscheme solarized
+" Theme
+"set background=light
+"colorscheme solarized
+colorscheme darkspectrum
+
+" Font
 set guifont=Monaco:h12
+
+" Use Node.js for JavaScript interpretation
+let $JS_CMD='node'

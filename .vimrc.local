@@ -3,3 +3,6 @@ colorscheme darkspectrum
 
 " Use Node.js for JavaScript interpretation
 let $JS_CMD='node'
+
+"Add fugitive to statusline
+set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P

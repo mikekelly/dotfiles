@@ -1,10 +1,20 @@
 " Theme
 "set background=light
 "colorscheme solarized
-colorscheme darkspectrum
+"colorscheme darkspectrum
+color jellybeans+
 
 " Font
-set guifont=Monaco:h12
+"set guifont=Monaco:h12
+set guifont=Inconsolata:h14
 
 " Use Node.js for JavaScript interpretation
 let $JS_CMD='node'
+
+" Don't show scrollbars
+set guioptions-=r
+set guioptions-=L
+set guioptions-=T
+
+" Add fugitive to statusline
+set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P

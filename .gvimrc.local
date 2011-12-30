@@ -1,8 +1,8 @@
 " Theme
-"set background=light
-"colorscheme solarized
-"colorscheme darkspectrum
-color jellybeans+
+set background=dark
+colorscheme solarized
+" colorscheme darkspectrum
+" color jellybeans+
 
 " Font
 "set guifont=Monaco:h12

@@ -32,7 +32,11 @@ ZSH_THEME="robbyrussell"
 plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
-source "$HOME/.aliases"
 
 # Customize to your needs...
 export PATH=/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin:/Users/mike/.nvm/v0.6.3/bin:/Users/mike/.rvm/gems/ruby-1.9.2-p180/bin:/Users/mike/.rvm/gems/ruby-1.9.2-p180@global/bin:/Users/mike/.rvm/rubies/ruby-1.9.2-p180/bin:/Users/mike/.rvm/bin:/usr/local/sbin
+
+# add custom aliases
+source "$HOME/.aliases"
+# RVM shizzle
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"

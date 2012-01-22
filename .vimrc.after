@@ -1,5 +1,8 @@
 " Colourscheme
-colorscheme darkspectrum
+" colorscheme darkspectrum
+syntax enable
+set background=dark
+colorscheme solarized
 
 " Use Node.js for JavaScript interpretation
 let $JS_CMD='node'

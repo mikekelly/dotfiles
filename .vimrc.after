@@ -1,11 +1,9 @@
 " Colourscheme
 " colorscheme darkspectrum
-syntax enable
+let g:solarized_termcolors=256
+set t_Co=16
 set background=dark
 colorscheme solarized
 
 " Use Node.js for JavaScript interpretation
 let $JS_CMD='node'
-
-"Add fugitive to statusline
-set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P

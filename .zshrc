@@ -40,3 +40,6 @@ export PATH=/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin:/Users/mik
 source "$HOME/.aliases"
 # RVM shizzle
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
+
+# tmux fix
+alias tmux="TERM=screen-256color-bce tmux"

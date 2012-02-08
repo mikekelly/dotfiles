@@ -2,5 +2,14 @@
 set background=dark
 colorscheme solarized
 
+" Tab completion for commands
+set wildmode=longest,list,full
+
 " Use Node.js for JavaScript interpretation
 let $JS_CMD='node'
+
+" Create directional shortcuts for moving among between splits
+nmap <C-j> <C-W>j
+nmap <C-k> <C-W>k
+nmap <C-l> <C-W>l
+nmap <C-h> <C-W>h

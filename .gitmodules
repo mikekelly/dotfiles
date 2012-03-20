@@ -1,3 +1,6 @@
 [submodule ".nvm"]
 	path = .nvm
 	url = git://github.com/creationix/nvm.git
+[submodule ".janus/vim-bufonly"]
+	path = .janus/vim-bufonly
+	url = https://github.com/duff/vim-bufonly.git

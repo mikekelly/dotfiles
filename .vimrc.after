@@ -13,3 +13,6 @@ nmap <C-j> <C-W>j
 nmap <C-k> <C-W>k
 nmap <C-l> <C-W>l
 nmap <C-h> <C-W>h
+
+" Map <F2> to toggle --INSERT (paste)-- mode
+set pastetoggle=<F2>

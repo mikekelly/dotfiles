@@ -236,4 +236,4 @@ test -n "$INTERACTIVE" -a -n "$LOGIN" && {
 }
 
 # STARTUP NVM
-. ~/.nvm/nvm.sh
+. ~/nvm/nvm.sh

@@ -1,6 +1,5 @@
 " Colourscheme
-set background=dark
-colorscheme solarized
+colorscheme zenburn
 
 " Tab completion for commands
 set wildmode=longest,list,full

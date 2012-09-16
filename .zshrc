@@ -29,17 +29,9 @@ ZSH_THEME="robbyrussell"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git)
+plugins=(git rails rails3 ruby rvm pow brew task)
 
 source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
-export PATH=/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin:/Users/mike/.nvm/v0.6.3/bin:/Users/mike/.rvm/gems/ruby-1.9.2-p180/bin:/Users/mike/.rvm/gems/ruby-1.9.2-p180@global/bin:/Users/mike/.rvm/rubies/ruby-1.9.2-p180/bin:/Users/mike/.rvm/bin:/usr/local/sbin
-
-# add custom aliases
-source "$HOME/.aliases"
-# RVM shizzle
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
-
-# tmux fix
-alias tmux="TERM=screen-256color-bce tmux"
+export PATH=/Users/mike/nvm/v0.8.2/bin:/Users/mike/.rvm/gems/ruby-1.9.3-p125/bin:/Users/mike/.rvm/gems/ruby-1.9.3-p125@global/bin:/Users/mike/.rvm/rubies/ruby-1.9.3-p125/bin:/Users/mike/.rvm/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/go/bin:/usr/local/sbin:/usr/sbin:/sbin

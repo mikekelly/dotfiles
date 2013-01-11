@@ -236,4 +236,4 @@ test -n "$INTERACTIVE" -a -n "$LOGIN" && {
 }
 
 # alias mvim to vim
-alias vim='mvimv -v'
+alias vim='mvim -v'

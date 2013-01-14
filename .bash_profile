@@ -237,3 +237,6 @@ test -n "$INTERACTIVE" -a -n "$LOGIN" && {
 
 # alias mvim to vim
 alias vim='mvim -v'
+
+# load tmux with correct TERM setting
+alias tmux='TERM=screen-256color-bce tmux'

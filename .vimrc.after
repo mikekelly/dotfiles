@@ -1,5 +1,7 @@
 " Colourscheme
 colorscheme solarized
+set t_Co=256
+let g:solarized_termcolors=16
 set background=light
 
 " Tab completion for commands

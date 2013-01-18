@@ -225,6 +225,9 @@ prompt_color
 # RVM: make rvm a function
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # This loads RVM into a shell session.
 
+# rbenv
+if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+
 
 # -------------------------------------------------------------------
 # MOTD

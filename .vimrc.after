@@ -1,8 +1,8 @@
 " Colourscheme
-colorscheme solarized
-set t_Co=256
+set background=dark
+set t_Co=16
 let g:solarized_termcolors=16
-set background=light
+colorscheme solarized
 
 " Tab completion for commands
 set wildmode=longest,list,full

@@ -238,3 +238,6 @@ alias vim='mvim -v'
 
 # load tmux with correct TERM setting
 alias tmux='TERM=screen-256color-bce tmux'
+
+# load tmuxifier
+[[ -s "$HOME/.tmuxifier/init.sh" ]] && source "$HOME/.tmuxifier/init.sh"

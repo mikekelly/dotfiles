@@ -7,3 +7,6 @@
 [submodule ".tmuxifier"]
 	path = .tmuxifier
 	url = https://github.com/jimeh/tmuxifier.git
+[submodule ".janus/vim-turbux"]
+	path = .janus/vim-turbux
+	url = https://github.com/jgdavey/vim-turbux.git

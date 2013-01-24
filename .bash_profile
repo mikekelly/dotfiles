@@ -233,6 +233,10 @@ test -n "$INTERACTIVE" -a -n "$LOGIN" && {
     uptime
 }
 
+# tmuxifier stuff
+export TMUXIFIER_LAYOUT_PATH="$HOME/.tmux_layouts/"
+alias session="tmuxifier load-session"
+
 # alias mvim to vim
 alias vim='mvim -v'
 

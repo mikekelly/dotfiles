@@ -21,3 +21,6 @@ set pastetoggle=<F2>
 
 " ignore bundled stuff
 set wildignore+=*/vendor/binstubs/*,*/vendor/bundle/*
+
+python import sys; sys.path.append("/usr/local/lib/python2.7/site-packages/")
+python from powerline.bindings.vim import source_plugin; source_plugin()

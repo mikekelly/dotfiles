@@ -38,7 +38,7 @@ umask 0022
 # ----------------------------------------------------------------------
 
 # we want the various sbins on the path along with /usr/local/bin
-PATH="vendor/binstubs:/usr/local/heroku/bin:/usr/local/bin:$PATH:/usr/local/sbin:/usr/sbin:/sbin"
+PATH="/usr/local/heroku/bin:/usr/local/bin:$PATH:/usr/local/sbin:/usr/sbin:/sbin"
 
 # ----------------------------------------------------------------------
 # ENVIRONMENT CONFIGURATION
@@ -241,7 +241,12 @@ alias session="tmuxifier load-session"
 alias vim='mvim -v'
 
 # load tmux with correct TERM setting
-alias tmux='TERM=screen-256color-bce tmux'
+alias tmux='TERM=screen-256color-bce tmux -2'
 
 # load tmuxifier
 [[ -s "$HOME/.tmuxifier/init.sh" ]] && source "$HOME/.tmuxifier/init.sh"
+
+# binstubs
+PATH="vendor/binstubs:$PATH"
+
+export TERM="xterm-256color"

@@ -31,7 +31,7 @@
     filemode = true
     logallrefupdates = true
     whitespace = space-before-tab, trailing-space
-	excludesfile = /Users/mike/.gitignore_global
+    excludesfile = ~/.gitignore_global
 
 [help]
     browser = open

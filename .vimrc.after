@@ -34,5 +34,8 @@ set shell=bash
 " set the min window width
 set winwidth=79
 
+" Fix turbux default for cucumber files
+let g:turbux_command_cucumber = 'cucumber --require features'
+
 python import sys; sys.path.append("/usr/local/lib/python2.7/site-packages/")
 python from powerline.bindings.vim import source_plugin; source_plugin()

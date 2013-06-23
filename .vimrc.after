@@ -25,5 +25,14 @@ set wildignore+=*/vendor/binstubs/*,*/vendor/bundle/*,*/node_modules/*,*/build/*
 " Current directory
 cnoremap %% <C-R>=expand('%:h').'/'<cr>
 
+" Highlight current line
+set cursorline
+
+" Apparently this helps with shell shizzle
+set shell=bash
+
+" set the min window width
+set winwidth=79
+
 python import sys; sys.path.append("/usr/local/lib/python2.7/site-packages/")
 python from powerline.bindings.vim import source_plugin; source_plugin()

@@ -20,7 +20,10 @@ nmap <C-h> <C-W>h
 set pastetoggle=<F2>
 
 " ignore bundled stuff
-set wildignore+=*/vendor/binstubs/*,*/vendor/bundle/*
+set wildignore+=*/vendor/binstubs/*,*/vendor/bundle/*,*/node_modules/*,*/build/**.js
+
+" Current directory
+cnoremap %% <C-R>=expand('%:h').'/'<cr>
 
 python import sys; sys.path.append("/usr/local/lib/python2.7/site-packages/")
 python from powerline.bindings.vim import source_plugin; source_plugin()

@@ -57,3 +57,5 @@
 
 [heroku]
 	account = personal
+[pull]
+	rebase = true

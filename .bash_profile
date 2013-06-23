@@ -1,6 +1,4 @@
-#!/bin/bash]
-#
-# My bash environmnet, most of which is cribbed from Ryan Tomayako's dotfiles
+#!/bin/bash
 #
 # Mike Kelly <mikekelly321@gmail.com>
 
@@ -56,12 +54,6 @@ case "$0" in
     *)  unset LOGIN ;;
 esac
 
-# enable en_US locale w/ utf-8 encodings if not already configured
-: ${LANG:="en_US.UTF-8"}
-: ${LANGUAGE:="en"}
-: ${LC_CTYPE:="en_US.UTF-8"}
-: $LC_ALL:="en_US.UTF-8"}
-export LANG LANGUAGE LC_CTYPE LC_ALL
 
 # always use PASSIVE mode ftp
 : ${FTP_PASSIVE:=1}
@@ -103,48 +95,35 @@ export PAGER MANPAGER
 # PROMPT
 # ----------------------------------------------------------------------
 
-RED="\[\033[0;31m\]"
-BROWN="\[\033[0;33m\]"
-GREY="\[\033[0;97m\]"
-BLUE="\[\033[0;37m\]"
-PS_CLEAR="\[\033[0m\]"
-SCREEN_ESC="\[\033k\033\134\]"
+source ~/.bash_colours
 
-if [ "$LOGNAME" = "root" ]; then
-    COLOR1="${RED}"
-    COLOR2="${BROWN}"
-    P="#"
-elif hostname | grep -q 'github\.com'; then
-    GITHUB=yep
-    COLOR1="\[\e[0;94m\]"
-    COLOR2="\[\e[0;92m\]"
-    P="\$"
-else
-    COLOR1="${BLUE}"
-    COLOR2="${BROWN}"
-    P="\$"
-fi
-
-parse_git_branch() {
-  git name-rev HEAD 2> /dev/null | sed 's#HEAD\ \(.*\)# {\1}#'
+#prompt_color
+function minutes_since_last_commit {
+    now=`date +%s`
+    last_commit=`git log --pretty=format:'%at' -1`
+    seconds_since_last_commit=$((now-last_commit))
+    minutes_since_last_commit=$((seconds_since_last_commit/60))
+    echo $minutes_since_last_commit
+}
+grb_git_prompt() {
+    local g="$(__gitdir)"
+    if [ -n "$g" ]; then
+        local MINUTES_SINCE_LAST_COMMIT=`minutes_since_last_commit`
+        if [ "$MINUTES_SINCE_LAST_COMMIT" -gt 30 ]; then
+            local COLOR=${RED}
+        elif [ "$MINUTES_SINCE_LAST_COMMIT" -gt 10 ]; then
+            local COLOR=${YELLOW}
+        else
+            local COLOR=${GREEN}
+        fi
+        local SINCE_LAST_COMMIT="${COLOR}$(minutes_since_last_commit)m${NORMAL}"
+        # The __git_ps1 function inserts the current git branch where %s is
+        local GIT_PROMPT=`__git_ps1 "(%s|${SINCE_LAST_COMMIT})"`
+        echo ${GIT_PROMPT}
+    fi
 }
 
-prompt_simple() {
-    unset PROMPT_COMMAND
-    PS1="[\u@\h:\w]\$ "
-    PS2="> "
-}
-
-prompt_compact() {
-    unset PROMPT_COMMAND
-    PS1="${COLOR1}${P}${PS_CLEAR} "
-    PS2="> "
-}
-
-prompt_color() {
-  PS1="${COLOR1}\w\$(parse_git_branch) ${COLOR2}$P${PS_CLEAR} "
-    PS2="\[[33;1m\]continue \[[0m[1m\]> "
-}
+test -n "$PS1" && PS1="\w \$(grb_git_prompt) \$ "
 
 # ----------------------------------------------------------------------
 # BASH COMPLETION
@@ -206,16 +185,10 @@ alias l.="ls -d .*"
 # USER SHELL ENVIRONMENT
 # -------------------------------------------------------------------
 
-# bring in rbdev functions
-# . rbdev 2>/dev/null || true
-
 # source ~/.shenv now if it exists
 test -r ~/.shenv &&
 . ~/.shenv
 
-# Use the color prompt by default when interactive
-test -n "$PS1" &&
-prompt_color
 
 # RVM: make rvm a function
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # This loads RVM into a shell session.

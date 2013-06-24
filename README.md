@@ -15,5 +15,5 @@ pip install git+git://github.com/Lokaltog/powerline
 other stuff:
 
 ```bash
-brew install rbenv ruby-build wget postgresql mysql pkg-config readline
+brew install bash rbenv ruby-build wget postgresql mysql pkg-config readline
 ```

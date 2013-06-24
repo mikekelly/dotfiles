@@ -10,3 +10,6 @@
 [submodule ".janus/vim-turbux"]
 	path = .janus/vim-turbux
 	url = https://github.com/jgdavey/vim-turbux.git
+[submodule ".janus/vim-tmux-navigator"]
+	path = .janus/vim-tmux-navigator
+	url = https://github.com/christoomey/vim-tmux-navigator.git

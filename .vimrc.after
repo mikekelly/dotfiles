@@ -1,7 +1,7 @@
 " Colourscheme
 set background=dark
-set t_Co=16
-let g:solarized_termcolors=16
+let g:solarized_termcolors=256
+set t_Co=256
 colorscheme solarized
 
 " Tab completion for commands
@@ -29,7 +29,10 @@ set shell=bash
 set winwidth=79
 
 " Fix turbux default for cucumber files
-let g:turbux_command_cucumber = 'cucumber --require features'
+let g:turbux_command_cucumber = 'zeus cucumber'
+
+" Scrolling
+set mouse=a
 
 python import sys; sys.path.append("/usr/local/lib/python2.7/site-packages/")
 python from powerline.bindings.vim import source_plugin; source_plugin()

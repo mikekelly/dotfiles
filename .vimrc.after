@@ -1,5 +1,5 @@
 " Colourscheme
-set background=dark
+set background=light
 let g:solarized_termcolors=256
 set t_Co=256
 colorscheme solarized
@@ -15,6 +15,12 @@ set pastetoggle=<F2>
 
 " ignore bundled stuff
 set wildignore+=*/vendor/binstubs/*,*/vendor/bundle/*,*/node_modules/*,*/build/**.js
+
+" Create directional shortcuts for moving among between splits
+nmap <C-j> <C-W>j
+nmap <C-k> <C-W>k
+nmap <C-l> <C-W>l
+nmap <C-h> <C-W>h
 
 " Current directory
 cnoremap %% <C-R>=expand('%:h').'/'<cr>

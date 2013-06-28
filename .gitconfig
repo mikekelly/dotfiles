@@ -3,28 +3,16 @@
 	email = mikekelly321@gmail.com
 
 [alias]
-    browse       = !hub browse
-    w            = !hub browse
-    compare      = !hub compare
-    cb           = !git-cut-branch
-    sh           = !git-sh
-    grab         = !git-grab
-    thanks       = !git-thanks
-    track        = !git-track
     ll           = log --pretty=oneline --abbrev-commit --max-count=15
     wip          = !git add -u && git commit -m ...
     wipc         = !date >> WIP && git add WIP && git commit -m ...
-    fp           = format-patch --stdout
     ci           = commit
     x            = checkout HEAD
     bv           = !git branch --color -v | cut -c1-100
-    incoming     = !git-incoming
-    in           = !git-incoming
-    outgoing     = !git-outgoing
-    out          = !git-outgoing
     s            = status -sb -uno --ignore-submodules=untracked
     st           = status
     sa           = status -sb --ignore-submodules=untracked
+    timeline     = log --oneline --graph --decorate
 
 
 [core]

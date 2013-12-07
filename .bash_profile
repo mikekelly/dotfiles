@@ -214,7 +214,7 @@ alias session="tmuxifier load-session"
 alias vim='mvim -v'
 
 # load tmux with correct TERM setting
-alias tmux='TERM=screen-256color-bce tmux -2'
+alias tmux='TERM=screen-256color tmux -2'
 
 # ctags
 alias ctags="ctags -R --exclude='vendor' --exclude='.git'"

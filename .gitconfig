@@ -6,13 +6,16 @@
     ll           = log --pretty=oneline --abbrev-commit --max-count=15
     wip          = !git add -u && git commit -m ...
     wipc         = !date >> WIP && git add WIP && git commit -m ...
-    ci           = commit
+    ci           = commit -v
     x            = checkout HEAD
     bv           = !git branch --color -v | cut -c1-100
     s            = status -sb -uno --ignore-submodules=untracked
     st           = status
     sa           = status -sb --ignore-submodules=untracked
     timeline     = log --oneline --graph --decorate
+    ri           = rebase --interactive
+    ra           = rebase --abort
+    rc           = rebase --continue
 
 
 [core]

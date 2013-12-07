@@ -1,22 +1,32 @@
-These are my dotfiles.
+These are my dotfiles that are OSX oriented.
 
-They're OSX oriented but should work ok on any linux.
+Setup:
 
-dependencies:
-
+My home directory is a git repo. Install it like this:
 ```bash
-brew install macvim ack ctags git curl reattach-to-user-namespace python
-curl -Lo- https://bit.ly/janus-bootstrap | bash
+cd ~
+git init
+git remote add origin git@github.com:mikekelly/dotfiles.git
+git pull origin master
+```
+To avoid noise, make sure git ignores all files by adding a `*` line to
+`~/.git/info/exclude`.
+
+Powerline:
+```bash
+brew install python
+brew install macvim --env-std --override-system-vim
 pip install git+git://github.com/Lokaltog/powerline
 ```
-- latest dev release of iTerm2 (http://iterm2.com)
-- powerline fonts (https://github.com/Lokaltog/powerline-fonts)
+Powerline fonts: [https://github.com/Lokaltog/powerline-fonts](https://github.com/Lokaltog/powerline-fonts)
 
-other stuff:
-
+Janus:
 ```bash
-brew install bash rbenv ruby-build wget postgresql mysql pkg-config \
-readline ack autoconf automake ctags curl git libevent macvim mongodb \
-ossp-uuid pkg-config postgresql rbenv readline \
-reattach-to-user-namespace ruby-build wget
+curl -Lo- https://bit.ly/janus-bootstrap | bash
+```
+
+Additional brews:
+```bash
+brew install bash rbenv ruby-build wget postgresql pkg-config ack autoconf \
+automake ctags curl libevent ossp-uuid readline reattach-to-user-namespace
 ```

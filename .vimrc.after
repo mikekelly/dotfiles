@@ -14,7 +14,7 @@ let $JS_CMD='node'
 set pastetoggle=<F2>
 
 " ignore bundled stuff
-set wildignore+=*/vendor/binstubs/*,*/vendor/bundle/*,*/node_modules/*,*/build/**.js
+set wildignore+=*/vendor/binstubs/*,*/vendor/bundle/*,*/node_modules/*,*/build/**.js,*/public/assets/*
 
 " Create directional shortcuts for moving among between splits
 nmap <C-j> <C-W>j

@@ -210,9 +210,6 @@ test -n "$INTERACTIVE" -a -n "$LOGIN" && {
 export TMUXIFIER_LAYOUT_PATH="$HOME/.tmux_layouts/"
 alias session="tmuxifier load-session"
 
-# alias mvim to vim
-alias vim='mvim -v'
-
 # load tmux with correct TERM setting
 alias tmux='TERM=screen-256color tmux -2'
 

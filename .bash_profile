@@ -97,33 +97,73 @@ export PAGER MANPAGER
 
 source ~/.bash_colours
 
-#prompt_color
+function format_last_commit_time {
+        local NUMBER=$1
+        local UNIT=""
+
+        if [ "$NUMBER" = "na" ]; then
+                UNIT=""
+        elif [ "$NUMBER" -lt 1 ]; then
+                NUMBER="now"
+                UNIT=""
+        elif [ "$NUMBER" -lt 60 ]; then
+                UNIT="m"
+        elif [ "$NUMBER" -lt 1440 ]; then
+                NUMBER=`expr $NUMBER / 60`
+                UNIT="h"
+        else
+                NUMBER=`expr $NUMBER / 1440`
+                UNIT="d"
+        fi
+
+        echo "${NUMBER}${UNIT}"
+}
+
 function minutes_since_last_commit {
     now=`date +%s`
-    last_commit=`git log --pretty=format:'%at' -1`
-    seconds_since_last_commit=$((now-last_commit))
-    minutes_since_last_commit=$((seconds_since_last_commit/60))
-    echo $minutes_since_last_commit
+    last_commit=`git log --pretty=format:'%at' -1 2> /dev/null`
+    if [ $? -eq 0 ]; then
+      seconds_since_last_commit=$((now-last_commit))
+      minutes_since_last_commit=$((seconds_since_last_commit/60))
+      echo $minutes_since_last_commit
+    else
+      echo "na"
+    fi
 }
+
 grb_git_prompt() {
     local g="$(__gitdir)"
     if [ -n "$g" ]; then
         local MINUTES_SINCE_LAST_COMMIT=`minutes_since_last_commit`
-        if [ "$MINUTES_SINCE_LAST_COMMIT" -gt 30 ]; then
-            local COLOR=${RED}
+                local DISPLAY_LAST_COMMIT_TIME=`format_last_commit_time $MINUTES_SINCE_LAST_COMMIT`
+        local yellow=$(tput setaf 3)
+        local green=$(tput setaf 2)
+        local red=$(tput setaf 1)
+        local none=$(tput sgr0)
+
+        if [ $MINUTES_SINCE_LAST_COMMIT = "na" ]; then
+            local COLOR=""
+        elif [ "$MINUTES_SINCE_LAST_COMMIT" -gt 30 ]; then
+            local COLOR=${red}
         elif [ "$MINUTES_SINCE_LAST_COMMIT" -gt 10 ]; then
-            local COLOR=${YELLOW}
+            local COLOR=${yellow}
         else
-            local COLOR=${GREEN}
+            local COLOR=${green}
         fi
-        local SINCE_LAST_COMMIT="${COLOR}$(minutes_since_last_commit)m${NORMAL}"
-        # The __git_ps1 function inserts the current git branch where %s is
-        local GIT_PROMPT=`__git_ps1 "(%s|${SINCE_LAST_COMMIT})"`
-        echo ${GIT_PROMPT}
+
+        if [ "$MINUTES_SINCE_LAST_COMMIT" = "na" ]; then
+            local GIT_PROMPT=`__git_ps1`
+        else
+            local SINCE_LAST_COMMIT="\[${COLOR}\]${DISPLAY_LAST_COMMIT_TIME}\[${none}\]"
+            local GIT_PROMPT=`__git_ps1 "(%s|${SINCE_LAST_COMMIT})"`
+        fi
+        PS1="\w ${GIT_PROMPT} \$ "
+    else
+      PS1="\w \$ "
     fi
 }
 
-test -n "$PS1" && PS1="\w \$(grb_git_prompt) \$ "
+PROMPT_COMMAND="grb_git_prompt"
 
 # ----------------------------------------------------------------------
 # BASH COMPLETION

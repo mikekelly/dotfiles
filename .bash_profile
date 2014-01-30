@@ -27,10 +27,12 @@ PATH="/usr/local/heroku/bin:/usr/local/bin:$PATH:/usr/local/sbin:/usr/sbin:/sbin
 # ignore backups, CVS directories, python bytecode, vim swap files
 FIGNORE="~:CVS:#:.pyc:.swp:.swa:apache-solr-*"
 
-# history stuff
-HISTCONTROL=ignoreboth
-HISTFILESIZE=10000
+# erase duplicate entries
+HISTCONTROL=erasedups
+# store 10k of them
 HISTSIZE=10000
+# Append to the history file when exiting instead of overwriting it
+shopt -s histappend
 
 # ----------------------------------------------------------------------
 # PAGER / EDITOR
@@ -163,6 +165,10 @@ source ~/git-completion.bash
 # LS AND DIRCOLORS
 # ----------------------------------------------------------------------
 
+export CLICOLOR=1
+export LSCOLORS="ExGxBxDxCxEgEdxbxgxcxd"
+export GREP_OPTIONS="--color"
+
 # we always pass these to ls(1)
 LS_COMMON="-hBG"
 
@@ -175,30 +181,22 @@ alias ll="ls -l"
 alias l.="ls -d .*"
 
 # -------------------------------------------------------------------
-# USER SHELL ENVIRONMENT
+# SHELL ENVIRONMENT
 # -------------------------------------------------------------------
 
 # rbenv
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
-# -------------------------------------------------------------------
-# MOTD
-# -------------------------------------------------------------------
+# load tmux with correct TERM setting
+alias tmux='TERM=screen-256color tmux -2'
 
 # tmuxifier stuff
 export TMUXIFIER_LAYOUT_PATH="$HOME/.tmux_layouts/"
 alias session="tmuxifier load-session"
-
-# load tmux with correct TERM setting
-alias tmux='TERM=screen-256color tmux -2'
+[[ -s "$HOME/.tmuxifier/init.sh" ]] && source "$HOME/.tmuxifier/init.sh"
 
 # ctags
-alias ctags="ctags -R --exclude='vendor' --exclude='.git'"
-
-# load tmuxifier
-[[ -s "$HOME/.tmuxifier/init.sh" ]] && source "$HOME/.tmuxifier/init.sh"
+alias ctags="ctags -R --exclude='.git'"
 
 # binstubs
 PATH="vendor/binstubs:$PATH"
-
-export TERM="xterm-256color"

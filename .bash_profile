@@ -200,3 +200,11 @@ alias ctags="ctags -R --exclude='.git'"
 
 # binstubs
 PATH="vendor/binstubs:$PATH"
+
+alias dc="docker-compose"
+
+export GOPATH=$HOME/projects/go
+export PATH=$PATH:$GOPATH/bin
+export PATH=$PATH:/usr/local/opt/go/libexec/bin
+
+eval $(docker-machine env curl)

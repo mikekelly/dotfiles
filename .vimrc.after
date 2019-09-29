@@ -38,4 +38,5 @@ set winwidth=79
 " Scrolling
 set mouse=a
 
-source /usr/local/lib/python2.7/site-packages/powerline/bindings/vim/plugin/powerline.vim
+" FIXME: reinstate powerline
+"source /usr/local/lib/python2.7/site-packages/powerline/bindings/vim/plugin/powerline.vim

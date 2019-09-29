@@ -207,4 +207,6 @@ export GOPATH=$HOME/projects/go
 export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:/usr/local/opt/go/libexec/bin
 
-eval $(docker-machine env curl)
+#eval $(docker-machine env curl)
+
+if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi

@@ -19,3 +19,6 @@
 [submodule ".janus/vim-swift"]
 	path = .janus/vim-swift
 	url = git://github.com/toyamarinyon/vim-swift.git
+[submodule ".janus/vim-elixir"]
+	path = .janus/vim-elixir
+	url = git@github.com:elixir-editors/vim-elixir.git

@@ -15,7 +15,7 @@ To avoid noise, make sure git ignores all files by adding a `*` line to
 Powerline:
 ```bash
 brew install python
-brew install macvim --env-std --override-system-vim
+brew install vim
 pip install powerline-status
 ```
 Powerline fonts: [https://github.com/Lokaltog/powerline-fonts](https://github.com/Lokaltog/powerline-fonts)

@@ -12,18 +12,25 @@ git pull origin master
 To avoid noise, make sure git ignores all files by adding a `*` line to
 `~/.git/info/exclude`.
 
-Powerline:
-```bash
-brew install python@3.9
-brew install vim
-pip3 install powerline-status
+Vim:
 ```
-Powerline fonts: [https://github.com/Lokaltog/powerline-fonts](https://github.com/Lokaltog/powerline-fonts)
+brew install vim
+```
 
 Janus:
 ```bash
 curl -Lo- https://bit.ly/janus-bootstrap | bash
 ```
+
+Powerline:
+```bash
+brew install python@3.9
+pip3 install powerline-status
+```
+
+Powerline fonts:
+* https://gist.github.com/lujiacn/32b598b1a6a43c996cbd93d42d466466
+* https://github.com/Lokaltog/powerline-fonts
 
 Additional brews:
 ```bash

@@ -8,6 +8,7 @@ cd ~
 git init
 git remote add origin git@github.com:mikekelly/dotfiles.git
 git pull origin master
+git submodule update --init --recursive
 ```
 To avoid noise, make sure git ignores all files by adding a `*` line to
 `~/.git/info/exclude`.

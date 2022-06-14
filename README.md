@@ -35,7 +35,7 @@ Powerline fonts:
 
 Additional brews:
 ```bash
-brew install bash tmux wget pkg-config ack autoconf \
+brew install bash vim tmux wget pkg-config ack autoconf \
                   automake ctags curl libevent ossp-uuid \
                   readline reattach-to-user-namespace
 ```

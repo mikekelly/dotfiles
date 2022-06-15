@@ -10,12 +10,15 @@ git remote add origin git@github.com:mikekelly/dotfiles.git
 git pull origin master
 git submodule update --init --recursive
 ```
-To avoid noise, make sure git ignores all files by adding a `*` line to
-`~/.git/info/exclude`.
 
-Vim:
+To avoid noise, make sure git ignores all untracked files in this repo:
 ```
-brew install vim
+echo "*" >> ~/.git/info/exclude
+```
+
+oh-my-zsh:
+```
+sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 ```
 
 Janus:
@@ -25,15 +28,15 @@ curl -Lo- https://bit.ly/janus-bootstrap | bash
 
 Powerline:
 ```bash
-brew install python@3.9
-pip3 install powerline-status
+brew install python && \
+  pip install powerline-status
 ```
 
 Powerline fonts:
-* https://gist.github.com/lujiacn/32b598b1a6a43c996cbd93d42d466466
-* https://github.com/Lokaltog/powerline-fonts
 
-Additional brews:
+https://github.com/Lokaltog/powerline-fonts
+
+Baseline tooling:
 ```bash
 brew install bash vim tmux wget pkg-config ack autoconf \
                   automake ctags curl libevent ossp-uuid \

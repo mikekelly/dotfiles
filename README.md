@@ -8,7 +8,6 @@ cd ~
 git init
 git remote add origin git@github.com:mikekelly/dotfiles.git
 git pull origin master
-git submodule update --init --recursive
 ```
 
 To avoid noise, make sure git ignores all untracked files in this repo:
@@ -21,9 +20,11 @@ oh-my-zsh:
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 ```
 
-Janus:
+Baseline tooling:
 ```bash
-curl -Lo- https://bit.ly/janus-bootstrap | bash
+brew install bash neovim luarocks tmux wget pkg-config ack autoconf \
+                  automake ctags curl libevent ossp-uuid \
+                  readline reattach-to-user-namespace
 ```
 
 Powerline:
@@ -35,10 +36,3 @@ brew install python && \
 Powerline fonts:
 
 https://github.com/Lokaltog/powerline-fonts
-
-Baseline tooling:
-```bash
-brew install bash vim tmux wget pkg-config ack autoconf \
-                  automake ctags curl libevent ossp-uuid \
-                  readline reattach-to-user-namespace
-```

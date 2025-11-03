@@ -123,3 +123,9 @@ set input-meta on
 set output-meta on
 set show-all-if-ambiguous on
 set visible-stats on
+source ${HOME}/.ghcup/env
+
+alias vi="nvim"
+alias vim="nvim"
+alias view="nvim -R"
+alias vimdiff="nvim -d"

@@ -72,6 +72,17 @@ vim.keymap.set("n", "\\n", ":NERDTreeToggle<CR>", { silent = true, noremap = tru
 vim.keymap.set("n", "\\/", ":Commentary<CR>", { silent = true })
 vim.keymap.set("v", "\\/", ":Commentary<CR>", { silent = true })
 
+-- Telescope keybindings
+local builtin = require('telescope.builtin')
+vim.keymap.set('n', '<C-p>', builtin.find_files, { desc = 'Find files' })
+vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = 'Live grep' })
+vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = 'Find buffers' })
+
+vim.keymap.set('n', '<C-h>', '<C-w>h')
+vim.keymap.set('n', '<C-j>', '<C-w>j')
+vim.keymap.set('n', '<C-k>', '<C-w>k')
+vim.keymap.set('n', '<C-l>', '<C-w>l')
+
 vim.opt.number = true
 vim.opt.ignorecase = true
 vim.opt.smartcase = true

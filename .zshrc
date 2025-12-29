@@ -123,9 +123,24 @@ set input-meta on
 set output-meta on
 set show-all-if-ambiguous on
 set visible-stats on
-source ${HOME}/.ghcup/env
 
 alias vi="nvim"
 alias vim="nvim"
 alias view="nvim -R"
 alias vimdiff="nvim -d"
+
+# bun completions
+[ -s "/Users/mike/.bun/_bun" ] && source "/Users/mike/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
+# wezterm cli
+PATH="$PATH:/Applications/WezTerm.app/Contents/MacOS"
+wt() {
+  wezterm cli spawn --cwd . --new-window 2>/dev/null
+}
+
+# opencode
+export PATH=/Users/mike/.opencode/bin:$PATH

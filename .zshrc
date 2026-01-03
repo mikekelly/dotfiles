@@ -23,3 +23,8 @@ wt() {
 
 # opencode
 export PATH=/Users/mike/.opencode/bin:$PATH
+
+# open main worktree
+open_main() {
+  cd "$(git rev-parse --git-common-dir)/.."
+}

@@ -16,6 +16,8 @@
     ri           = rebase --interactive
     ra           = rebase --abort
     rc           = rebase --continue
+    ffmain       = "!f() { dir=\"$(cd \"$(git rev-parse --git-common-dir)/..\" && pwd)\"; unset GIT_DIR; branch=$(git -C \"$dir\" rev-parse --abbrev-ref HEAD); if [ \"$branch\" = \"main\" ]; then git -C \"$dir\" pull --ff-only origin main; else echo \"main worktree is on $branch, not main\"; fi; }; f"
+    ffmaster     = "!f() { dir=\"$(cd \"$(git rev-parse --git-common-dir)/..\" && pwd)\"; unset GIT_DIR; branch=$(git -C \"$dir\" rev-parse --abbrev-ref HEAD); if [ \"$branch\" = \"master\" ]; then git -C \"$dir\" pull --ff-only origin master; else echo \"main worktree is on $branch, not master\"; fi; }; f"
 
 
 [core]

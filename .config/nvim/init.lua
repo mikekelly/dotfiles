@@ -63,6 +63,9 @@ require("lazy").setup({
 
     { "mbbill/undotree" },
     { "preservim/nerdtree" },
+
+    -- Inline diff viewer
+    { "axkirillov/unified.nvim", opts = {} },
   },
   install = { colorscheme = { "habamax" } },
   checker = { enabled = true },

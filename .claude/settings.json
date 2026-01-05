@@ -1,12 +1,39 @@
 {
-  "enabledPlugins": {
-    "skill-manager@promode": true,
-    "promode@promode": true,
-    "rust-analyzer-lsp@claude-plugins-official": true
+  "hooks": {
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "ps -o ppid= -p $PPID | xargs -I{} ps -o tty= -p {} | xargs -I{} sh -c 'printf \"\\007\" > /dev/{}'"
+          }
+        ]
+      }
+    ]
   },
   "statusLine": {
     "type": "command",
     "command": "bunx -y ccstatusline@latest",
     "padding": 0
+  },
+  "enabledPlugins": {
+    "promode@promode": true,
+    "rust-analyzer-lsp@claude-plugins-official": true,
+    "ralph-wiggum@claude-plugins-official": true,
+    "typescript-lsp@claude-plugins-official": true,
+    "pyright-lsp@claude-plugins-official": true,
+    "elixir-lsp@claude-code-elixir": true,
+    "mix-format@claude-code-elixir": true,
+    "mix-compile@claude-code-elixir": true,
+    "elixir@claude-code-elixir": true
+  },
+  "mcpServers": {
+    "mcp-agent-mail": {
+      "type": "http",
+      "url": "http://127.0.0.1:8765/mcp/",
+      "headers": {
+        "Authorization": "Bearer 34f2ffa8d3c5276d6e8376ef97cb78fd4ffc951d47412b8911ba5fef3e42a708"
+      }
+    }
   }
 }

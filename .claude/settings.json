@@ -1,0 +1,12 @@
+{
+  "enabledPlugins": {
+    "skill-manager@promode": true,
+    "promode@promode": true,
+    "rust-analyzer-lsp@claude-plugins-official": true
+  },
+  "statusLine": {
+    "type": "command",
+    "command": "bunx -y ccstatusline@latest",
+    "padding": 0
+  }
+}

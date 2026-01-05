@@ -20,6 +20,7 @@ vim.g.maplocalleader = "\\"
 -- Setup lazy.nvim
 require("lazy").setup({
   spec = {
+    { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
     { "vim-scripts/BufOnly.vim" },
     { "tidalcycles/vim-tidal" },
 
@@ -33,7 +34,14 @@ require("lazy").setup({
     { "lewis6991/gitsigns.nvim", config = true },
 
     -- Statusline
-    { "nvim-lualine/lualine.nvim", config = true },
+    {
+      "nvim-lualine/lualine.nvim",
+      opts = {
+        sections = {
+          lualine_c = { { "filename", path = 3 } },
+        },
+      },
+    },
 
     -- Motion / comments / text
     { "easymotion/vim-easymotion" },
@@ -65,11 +73,13 @@ require("lazy").setup({
     { "preservim/nerdtree" },
 
     -- Inline diff viewer
-    { "axkirillov/unified.nvim", opts = {} },
+    { "mikekelly/overwatch.nvim", opts = {} },
   },
-  install = { colorscheme = { "habamax" } },
+  install = { colorscheme = { "catppuccin" } },
   checker = { enabled = true },
 })
+
+vim.cmd.colorscheme "catppuccin"
 
 vim.keymap.set("n", "\\n", ":NERDTreeToggle<CR>", { silent = true, noremap = true })
 vim.keymap.set("n", "\\/", ":Commentary<CR>", { silent = true })
@@ -91,3 +101,12 @@ vim.opt.ignorecase = true
 vim.opt.smartcase = true
 vim.opt.updatetime = 300
 vim.opt.signcolumn = "yes"
+
+-- Open Overwatch when nvim starts with no file arguments
+vim.api.nvim_create_autocmd("VimEnter", {
+  callback = function()
+    if vim.fn.argc() == 0 and vim.fn.line2byte("$") == -1 then
+      vim.cmd("Overwatch")
+    end
+  end,
+})

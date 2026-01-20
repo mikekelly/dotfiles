@@ -283,7 +283,7 @@ web_client {
 // Choose the theme that is specified in the themes section.
 // Default: default
 // 
-// theme "dracula"
+theme "catppuccin-mocha"
  
 // Choose the base input mode of zellij.
 // Default: normal
@@ -410,8 +410,15 @@ copy_command "pbcopy"
 // Options:
 //   - true (default)
 //   - false
-// 
+//
 // session_serialization false
+
+// What to restore when resurrecting a session
+// Options:
+//   - "all" (default) - restore layout and re-run commands
+//   - "layout" - restore layout only, don't re-run commands
+//
+resurrection_strategy "layout"
  
 // Whether pane viewports are serialized along with the session, default is false
 // Options:
@@ -531,3 +538,19 @@ show_startup_tips false
 // can be useful for removing wrappers around commands
 // Note: be sure to escape backslashes and similar characters properly
 // post_command_discovery_hook "echo $RESURRECT_COMMAND | sed <your_regex_here>"
+
+themes {
+    catppuccin-mocha {
+        bg "#1e1e2e"
+        fg "#cdd6f4"
+        red "#f38ba8"
+        green "#a6e3a1"
+        blue "#89b4fa"
+        yellow "#f9e2af"
+        magenta "#f5c2e7"
+        orange "#fab387"
+        cyan "#89dceb"
+        black "#181825"
+        white "#cdd6f4"
+    }
+}

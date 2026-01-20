@@ -2,6 +2,7 @@ export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME="robbyrussell"
 plugins=(git)
 source $ZSH/oh-my-zsh.sh
+unalias gap
 
 export EDITOR='nvim'
 
@@ -35,13 +36,9 @@ export PATH="/Users/mike/code/zellij/target/release:$PATH"
 
 # beads
 export PATH="$PATH:/Users/mike/.local/bin"
-
-# >>> MCP Agent Mail bd path /Users/mike/.local/bin
-if [[ ":$PATH:" != *":/Users/mike/.local/bin:"* ]]; then
-  export PATH="/Users/mike/.local/bin:$PATH"
-fi
-# <<< MCP Agent Mail bd path
-
-# >>> MCP Agent Mail alias
-alias am='cd "/Users/mike/code/skeleton-crew/mcp_agent_mail" && scripts/run_server_with_token.sh'
-# <<< MCP Agent Mail alias
+# The following lines have been added by Docker Desktop to enable Docker CLI completions.
+fpath=(/Users/mike/.docker/completions $fpath)
+autoload -Uz compinit
+compinit
+# End of Docker CLI completions
+export FASTLANE_USER="mikekelly321@gmail.com"

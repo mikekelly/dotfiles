@@ -37,6 +37,11 @@ require("lazy").setup({
     {
       "nvim-lualine/lualine.nvim",
       opts = {
+        options = {
+          disabled_filetypes = {
+            statusline = { "neo-tree", "overwatch_tree", "overwatch_hunk" },
+          },
+        },
         sections = {
           lualine_c = { { "filename", path = 3 } },
         },
@@ -63,17 +68,42 @@ require("lazy").setup({
     { "editorconfig/editorconfig-vim" },
 
     -- Treesitter (languages)
-    { "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
+    {
+      "nvim-treesitter/nvim-treesitter",
+      build = ":TSUpdate",
+      config = function()
+        require("nvim-treesitter.configs").setup({
+          ensure_installed = { "elixir", "heex", "eex" },
+          highlight = { enable = true },
+        })
+      end,
+    },
+
+    -- LSP (mason for installing servers)
+    {
+      "williamboman/mason.nvim",
+      config = true,
+      build = ":MasonInstall typescript-language-server elixir-ls pyright",
+    },
 
     -- Quality of life
     { "folke/which-key.nvim", opts = {} },
     { "folke/todo-comments.nvim", dependencies = { "nvim-lua/plenary.nvim" }, opts = {} },
 
     { "mbbill/undotree" },
-    { "preservim/nerdtree" },
+    {
+      "nvim-neo-tree/neo-tree.nvim",
+      branch = "v3.x",
+      dependencies = {
+        "nvim-lua/plenary.nvim",
+        "nvim-tree/nvim-web-devicons",
+        "MunifTanjim/nui.nvim",
+      },
+      opts = {},
+    },
 
-    -- Inline diff viewer
-    { "mikekelly/overwatch.nvim", opts = {} },
+    -- Inline diff viewer (using local dev version)
+    { dir = "~/code/overwatch.nvim", opts = {} },
   },
   install = { colorscheme = { "catppuccin" } },
   checker = { enabled = true },
@@ -81,8 +111,40 @@ require("lazy").setup({
 
 vim.cmd.colorscheme "catppuccin"
 
-vim.keymap.set("n", "\\n", ":NERDTreeToggle<CR>", { silent = true, noremap = true })
+-- LSP configuration (nvim 0.11+)
+vim.lsp.config.ts_ls = {}
+vim.lsp.config.pyright = {}
+vim.lsp.config.elixirls = {}
+vim.lsp.enable({ "ts_ls", "pyright", "elixirls" })
+
+-- Toggle functions that swap neo-tree and overwatch
+local function close_neotree()
+  local ok, manager = pcall(require, "neo-tree.sources.manager")
+  if ok then
+    manager.close_all()
+  end
+end
+
+local function close_overwatch()
+  local ok, state = pcall(require, "overwatch.state")
+  if ok and state.is_active() then
+    require("overwatch.command").reset()
+  end
+end
+
+vim.keymap.set("n", "\\n", function()
+  close_overwatch()
+  vim.cmd("Neotree toggle")
+end, { silent = true, noremap = true, desc = "Toggle Neo-tree" })
+
+vim.keymap.set("n", "\\o", function()
+  close_neotree()
+  vim.cmd("Overwatch")
+end, { silent = true, noremap = true, desc = "Toggle Overwatch" })
 vim.keymap.set("n", "\\/", ":Commentary<CR>", { silent = true })
+vim.keymap.set("n", "\\t", function()
+  vim.fn.system({ "open", "-a", "Typora", vim.fn.expand("%:p") })
+end, { silent = true, desc = "Open in Typora" })
 vim.keymap.set("v", "\\/", ":Commentary<CR>", { silent = true })
 
 -- Telescope keybindings
@@ -96,11 +158,23 @@ vim.keymap.set('n', '<C-j>', '<C-w>j')
 vim.keymap.set('n', '<C-k>', '<C-w>k')
 vim.keymap.set('n', '<C-l>', '<C-w>l')
 
+vim.keymap.set('n', '<C-S-^>', '<C-^>', { desc = 'Toggle alternate buffer' })
+
+-- Overwatch hunk navigation
+vim.keymap.set('n', ']h', function() require('overwatch.navigation').next_hunk() end, { desc = 'Next hunk' })
+vim.keymap.set('n', '[h', function() require('overwatch.navigation').previous_hunk() end, { desc = 'Previous hunk' })
+
 vim.opt.number = true
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
 vim.opt.updatetime = 300
 vim.opt.signcolumn = "yes"
+
+-- LSP keybindings
+vim.keymap.set("n", "<C-]>", vim.lsp.buf.definition, { desc = "Go to definition" })
+vim.keymap.set("n", "gr", vim.lsp.buf.references, { desc = "Find references" })
+vim.keymap.set("n", "K", vim.lsp.buf.hover, { desc = "Hover docs" })
+vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, { desc = "Rename symbol" })
 
 -- Open Overwatch when nvim starts with no file arguments
 vim.api.nvim_create_autocmd("VimEnter", {

@@ -13,20 +13,11 @@
   },
   "statusLine": {
     "type": "command",
-    "command": "~/.claude/scripts/context-bar.sh",
+    "command": "bunx -y ccstatusline@latest",
     "padding": 0
   },
   "enabledPlugins": {
-    "promode@promode": true,
-    "rust-analyzer-lsp@claude-plugins-official": true,
-    "ralph-wiggum@claude-plugins-official": true,
-    "typescript-lsp@claude-plugins-official": true,
-    "pyright-lsp@claude-plugins-official": true,
-    "elixir-lsp@claude-code-elixir": true,
-    "mix-format@claude-code-elixir": true,
-    "mix-compile@claude-code-elixir": true,
-    "elixir@claude-code-elixir": true
+    "swift-lsp@claude-plugins-official": true
   },
-  "mcpServers": {
-  }
+  "mcpServers": {}
 }

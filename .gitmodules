@@ -1,9 +1,3 @@
-[submodule ".janus/vim-bufonly"]
-	path = .janus/vim-bufonly
-	url = https://github.com/duff/vim-bufonly.git
-[submodule ".janus/vim-elixir"]
-	path = .janus/vim-elixir
-	url = git@github.com:elixir-editors/vim-elixir.git
 [submodule ".tmux/plugins/tpm"]
 	path = .tmux/plugins/tpm
 	url = https://github.com/tmux-plugins/tpm

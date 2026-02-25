@@ -24,7 +24,6 @@
     filemode = true
     logallrefupdates = true
     whitespace = space-before-tab, trailing-space
-    excludesfile = ~/.gitignore_global
 
 [help]
     browser = open

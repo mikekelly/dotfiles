@@ -1,0 +1,6 @@
+macos-option-as-alt = true
+bell-features = attention
+
+# Unbind defaults so zellij receives alt+arrows
+keybind = alt+arrow_left=unbind
+keybind = alt+arrow_right=unbind

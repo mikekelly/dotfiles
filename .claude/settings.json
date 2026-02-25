@@ -1,5 +1,5 @@
 {
-  "plansDirectory": "./plans",
+  "model": "opus",
   "hooks": {
     "Stop": [
       {
@@ -19,7 +19,10 @@
   },
   "enabledPlugins": {
     "swift-lsp@claude-plugins-official": true,
-    "rust-analyzer-lsp@claude-plugins-official": true
+    "rust-analyzer-lsp@claude-plugins-official": true,
+    "cartographer@cartographer-marketplace": true,
+    "ralph-loop@claude-plugins-official": true
   },
+  "skipDangerousModePermissionPrompt": true,
   "mcpServers": {}
 }

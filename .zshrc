@@ -18,6 +18,8 @@ alias vim="nvim"
 alias view="nvim -R"
 alias vimdiff="nvim -d"
 alias pip="pip3"
+alias dot='/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME'
+compdef _git dot=git
 
 # bun
 [ -s "/Users/mike/.bun/_bun" ] && source "/Users/mike/.bun/_bun"

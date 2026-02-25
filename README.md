@@ -1,38 +1,40 @@
-These are my dotfiles that are OSX oriented.
+# Dotfiles
 
-Setup:
+macOS-oriented dotfiles managed with a bare git repo.
 
-My home directory is a git repo. Install it like this:
+## How it works
+
+A bare git repo lives at `~/.dotfiles` with `$HOME` as the work tree. The `dot` alias wraps git to target this repo:
+
 ```bash
-cd ~
-git init
-git remote add origin git@github.com:mikekelly/dotfiles.git
-git pull origin master
+alias dot='/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME'
 ```
 
-To avoid noise, make sure git ignores all untracked files in this repo:
-```
-echo "*" >> ~/.git/info/exclude
-```
+This avoids putting a `.git` directory in `$HOME`, so editors, prompts, and scripts in `$HOME` or non-repo subdirectories don't pick up the dotfiles repo.
 
-oh-my-zsh:
-```
+## Setup on a new machine
+
+```bash
+git clone --bare git@github.com:mikekelly/dotfiles.git ~/.dotfiles
+alias dot='/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME'
+dot checkout
+dot config status.showUntrackedFiles no
+dot submodule update --init --depth=1
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 ```
 
-Baseline tooling:
+If `dot checkout` complains about existing files, back them up first:
+
 ```bash
-brew install bash neovim luarocks tmux wget pkg-config ack autoconf \
-                  automake ctags curl libevent ossp-uuid \
-                  readline reattach-to-user-namespace
+dot checkout 2>&1 | grep -E "^\s+" | awk '{print $1}' | xargs -I{} mv {} {}.bak
+dot checkout
 ```
 
-Powerline:
+## Usage
+
 ```bash
-brew install python && \
-  pip install powerline-status
+dot status
+dot add .zshrc
+dot commit -m "Update zshrc"
+dot push
 ```
-
-Powerline fonts:
-
-https://github.com/Lokaltog/powerline-fonts

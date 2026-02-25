@@ -4,3 +4,15 @@
 [submodule ".janus/vim-elixir"]
 	path = .janus/vim-elixir
 	url = git@github.com:elixir-editors/vim-elixir.git
+[submodule ".tmux/plugins/tpm"]
+	path = .tmux/plugins/tpm
+	url = https://github.com/tmux-plugins/tpm
+[submodule ".tmux/plugins/tmux-resurrect"]
+	path = .tmux/plugins/tmux-resurrect
+	url = https://github.com/tmux-plugins/tmux-resurrect
+[submodule ".tmux/plugins/tmux-continuum"]
+	path = .tmux/plugins/tmux-continuum
+	url = https://github.com/tmux-plugins/tmux-continuum
+[submodule ".oh-my-zsh/custom/themes/powerlevel10k"]
+	path = .oh-my-zsh/custom/themes/powerlevel10k
+	url = https://github.com/romkatv/powerlevel10k.git

@@ -67,12 +67,12 @@ if [[ -n $cwd ]] && git -C "$cwd" rev-parse --is-inside-work-tree &>/dev/null; t
     [[ $stat =~ '([0-9]+) deletion' ]] && del=$match[1]
     IFS=$'\t' read -r ahead behind <<<"$(g rev-list --left-right --count HEAD..."$base")"
     if [[ -z $stat && $ahead == 0 && $behind == 0 ]]; then
-      diff="${C_DIM}= ${base}${C_RESET}"
+      diff="${C_DIM}=${C_RESET}"
     else
       diff="${C_ADD}+${add}${C_RESET} ${C_DEL}-${del}${C_RESET}${C_DIM} ${files:-0}f"
       (( ahead > 0 )) && diff+=" ↑${ahead}"
       (( behind > 0 )) && diff+=" ↓${behind}"
-      diff+=" vs ${base}${C_RESET}"
+      diff+="${C_RESET}"
     fi
     parts+=("$diff")
   else

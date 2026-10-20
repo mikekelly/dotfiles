@@ -73,6 +73,13 @@ curl -fsSL https://herdr.dev/install.sh | sh
 infocmp -x ghostty | sed 's/^ghostty|/xterm-ghostty|ghostty|/' | sudo tic -x -
 
 sudo chsh -s /usr/bin/zsh "$USER"
+
+# Make vi/vim/editor run nvim system-wide (any shell, sudo, scripts)
+for n in vi vim editor; do sudo update-alternatives --set $n /usr/bin/nvim; done
+for pair in "view:-R" "vimdiff:-d" "ex:-e"; do
+  printf '#!/bin/sh\nexec /usr/bin/nvim %s "$@"\n' "${pair#*:}" | sudo tee /usr/local/bin/${pair%%:*} >/dev/null
+  sudo chmod 755 /usr/local/bin/${pair%%:*}
+done
 ```
 
 Neovim must be 0.11.2 or newer for LazyVim. Check with `nvim --version`.

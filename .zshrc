@@ -8,6 +8,10 @@ fi
 export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME="powerlevel10k/powerlevel10k"
 plugins=(git)
+# The following lines have been added by Docker Desktop to enable Docker CLI completions.
+# (Moved above oh-my-zsh so its compinit picks them up; no second compinit needed.)
+fpath=($HOME/.docker/completions $fpath)
+# End of Docker CLI completions
 source $ZSH/oh-my-zsh.sh
 unalias gap
 
@@ -42,11 +46,6 @@ export PATH="$HOME/code/zellij/target/release:$PATH"
 
 # beads, herdr, fd symlink (linux)
 export PATH="$HOME/.local/bin:$PATH"
-# The following lines have been added by Docker Desktop to enable Docker CLI completions.
-fpath=($HOME/.docker/completions $fpath)
-autoload -Uz compinit
-compinit
-# End of Docker CLI completions
 export FASTLANE_USER="mikekelly321@gmail.com"
 
 [[ -f ~/.zshcreds ]] && source ~/.zshcreds

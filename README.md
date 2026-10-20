@@ -27,7 +27,6 @@ This avoids putting a `.git` directory in `$HOME`, so editors, prompts, and scri
 - `.config/zellij/config.kdl` - zellij terminal multiplexer config
 - `.claude/settings.json` - Claude Code settings
 - `.claude/scripts/statusline.zsh` - Claude Code status line (repo, diff vs default branch, worktree, context and rate limits; needs `jq`)
-- `.claude/scripts/context-bar.sh` - previous status line script (unused)
 - `.config/herdr/config.toml` - herdr config (zsh panes, `alt+1..9` / `alt+up`/`alt+down` agent navigation)
 
 ## Submodules

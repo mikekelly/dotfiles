@@ -23,6 +23,25 @@ alias view="nvim -R"
 alias vimdiff="nvim -d"
 alias pip="pip3"
 alias dot='/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME'
+
+# Interactive claude: bypass permissions + Remote Control, and a fresh worktree
+# (from origin/HEAD) when inside a git repo. Subcommands and -p runs pass
+# through untouched; --resume/--continue/-w don't get a new worktree.
+# The boolean flag goes last so -w/--remote-control (optional values) can't
+# swallow a prompt or flag passed after them.
+claude() {
+  local sub="agents attach auth auto-mode doctor gateway import install logs mcp plugin purge remote-control respawn rm setup-token stop ultrareview update"
+  if [[ -n $1 && " $sub " == *" $1 "* ]] || (( ${@[(I)-p|--print]} )); then
+    command claude "$@"
+    return
+  fi
+  local -a flags=(--remote-control --dangerously-skip-permissions)
+  if git rev-parse --is-inside-work-tree &>/dev/null \
+    && ! (( ${@[(I)-r|--resume|--resume=*|-c|--continue|-w|--worktree|--worktree=*]} )); then
+    flags=(-w "${flags[@]}")
+  fi
+  command claude "${flags[@]}" "$@"
+}
 compdef _git dot=git
 
 # bun

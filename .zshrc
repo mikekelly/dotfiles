@@ -32,9 +32,6 @@ wt() {
   wezterm cli spawn --cwd . --new-window 2>/dev/null
 }
 
-# opencode
-export PATH="$HOME/.opencode/bin:$PATH"
-
 # open main worktree
 open_main() {
   cd "$(git rev-parse --git-common-dir)/.."

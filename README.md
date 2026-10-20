@@ -26,7 +26,9 @@ This avoids putting a `.git` directory in `$HOME`, so editors, prompts, and scri
 - `.config/nvim/` - neovim config ([LazyVim](https://www.lazyvim.org) based)
 - `.config/zellij/config.kdl` - zellij terminal multiplexer config
 - `.claude/settings.json` - Claude Code settings
-- `.claude/scripts/context-bar.sh` - Claude Code status line script
+- `.claude/scripts/statusline.zsh` - Claude Code status line (repo, diff vs default branch, worktree, context and rate limits; needs `jq`)
+- `.claude/scripts/context-bar.sh` - previous status line script (unused)
+- `.config/herdr/config.toml` - herdr config (zsh panes, `alt+1..9` / `alt+up`/`alt+down` agent navigation)
 
 ## Submodules
 
@@ -42,7 +44,7 @@ This avoids putting a `.git` directory in `$HOME`, so editors, prompts, and scri
 **macOS** (with [Homebrew](https://brew.sh)):
 
 ```bash
-brew install neovim git ripgrep fd fzf lazygit tree-sitter-cli node tmux gh
+brew install neovim git ripgrep fd fzf lazygit tree-sitter-cli node tmux gh jq
 brew install --cask ghostty tailscale-app
 curl -fsSL https://herdr.dev/install.sh | sh
 ```
@@ -51,7 +53,7 @@ curl -fsSL https://herdr.dev/install.sh | sh
 
 ```bash
 sudo apt-get install -y zsh neovim git ripgrep fd-find fzf lazygit tree-sitter-cli \
-  nodejs npm build-essential unzip tmux ncurses-term
+  nodejs npm build-essential unzip tmux ncurses-term jq
 mkdir -p ~/.local/bin && ln -sf /usr/bin/fdfind ~/.local/bin/fd
 
 # Tailscale (official apt repo)

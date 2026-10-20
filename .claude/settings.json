@@ -26,7 +26,7 @@
   },
   "statusLine": {
     "type": "command",
-    "command": "bunx -y ccstatusline@latest",
+    "command": "zsh ~/.claude/scripts/statusline.zsh",
     "padding": 0
   },
   "enabledPlugins": {

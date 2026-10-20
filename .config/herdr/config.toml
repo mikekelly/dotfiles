@@ -1,0 +1,9 @@
+onboarding = false
+
+[terminal]
+default_shell = "zsh"
+
+[keys]
+focus_agent = "alt+1..9"
+previous_agent = "alt+up"
+next_agent = "alt+down"

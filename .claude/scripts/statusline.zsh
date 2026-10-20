@@ -1,6 +1,6 @@
 #!/usr/bin/env zsh
 # Claude Code status line:
-#   owner/repo | +added -removed N files ↑ahead ↓behind vs origin/main | worktree | ctx % | 5h % | 7d %
+#   owner/repo | +added -removed N files ↑ahead ↓behind | worktree | ctx % | 5h % | 7d % | version
 
 input=$(cat)
 
@@ -31,13 +31,14 @@ fmt_pct() {
 }
 
 # Unit separator rather than tab: IFS whitespace would collapse empty fields
-IFS=$'\x1f' read -r cwd wt_name gh_repo ctx five week <<<"$(print -r -- "$input" | jq -r '[
+IFS=$'\x1f' read -r cwd wt_name gh_repo ctx five week version <<<"$(print -r -- "$input" | jq -r '[
   (.workspace.current_dir // .cwd // ""),
   (.worktree.name // ""),
   (.workspace.repo | if . then "\(.owner)/\(.name)" else "" end),
   (.context_window.used_percentage // "" | tostring),
   (.rate_limits.five_hour.used_percentage // "" | tostring),
-  (.rate_limits.seven_day.used_percentage // "" | tostring)
+  (.rate_limits.seven_day.used_percentage // "" | tostring),
+  (.version // "")
 ] | join("\u001f")')"
 
 parts=()
@@ -95,6 +96,7 @@ else
 fi
 
 parts+=("$(fmt_pct ctx "$ctx")" "$(fmt_pct 5h "$five")" "$(fmt_pct 7d "$week")")
+[[ -n $version ]] && parts+=("${C_DIM}v${version}${C_RESET}")
 
 sep=" ${C_DIM}│${C_RESET} "
 print -rn -- "${(pj:$sep:)parts}"

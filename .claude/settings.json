@@ -29,12 +29,6 @@
     "command": "zsh ~/.claude/scripts/statusline.zsh",
     "padding": 0
   },
-  "enabledPlugins": {
-    "swift-lsp@claude-plugins-official": true,
-    "rust-analyzer-lsp@claude-plugins-official": true,
-    "cartographer@cartographer-marketplace": true,
-    "ralph-loop@claude-plugins-official": true
-  },
   "skipDangerousModePermissionPrompt": true,
   "theme": "dark",
   "tui": "fullscreen",
